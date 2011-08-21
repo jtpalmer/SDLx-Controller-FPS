@@ -1,6 +1,9 @@
 package SDLx::Controller::FPS;
 use strict;
 use warnings;
+
+# ABSTRACT: Fixed FPS controller for SDL
+
 use Carp;
 use Scalar::Util qw(refaddr);
 use SDLx::FPS;
