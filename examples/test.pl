@@ -6,7 +6,10 @@ use SDL::Events;
 use SDLx::App;
 use SDLx::Controller::FPS;
 
-my $app = SDLx::App->new();
+my $app = SDLx::App->new(
+    w => 320,
+    h => 240,
+);
 
 my $fps = 30;
 
