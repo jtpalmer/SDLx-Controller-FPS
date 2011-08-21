@@ -11,15 +11,15 @@ my $app = SDLx::App->new();
 my $fps = 30;
 
 my $controller = SDLx::Controller::FPS->new(
-    fps        => $fps,
-    eoq        => 1,
+    fps => $fps,
+    eoq => 1,
 );
 
 my $rect = {
-    x => 0,
-    y => 0,
-    w => 25,
-    h => 25,
+    x  => 0,
+    y  => 0,
+    w  => 25,
+    h  => 25,
     vx => 1,
     vy => 1,
 };
@@ -33,7 +33,7 @@ $controller->add_event_handler(
             my $key = SDL::Events::get_key_name( $event->key_sym );
 
             if ( $key =~ /^[123]$/ ) {
-                $controller->fps($fps / $key);
+                $controller->fps( $fps / $key );
                 $controller->move_ratio($key);
             }
         }
@@ -45,19 +45,19 @@ $controller->add_move_handler(
         $rect->{x} += $rect->{vx};
         $rect->{y} += $rect->{vy};
 
-        if ($rect->{vx} < 0 && $rect->{x} < 0) {
+        if ( $rect->{vx} < 0 && $rect->{x} < 0 ) {
             $rect->{vx} *= -1;
         }
 
-        if ($rect->{vy} < 0 && $rect->{y} < 0) {
+        if ( $rect->{vy} < 0 && $rect->{y} < 0 ) {
             $rect->{vy} *= -1;
         }
 
-        if ($rect->{vx} > 0 && $rect->{x} > $app->w - $rect->{w}) {
+        if ( $rect->{vx} > 0 && $rect->{x} > $app->w - $rect->{w} ) {
             $rect->{vx} *= -1;
         }
 
-        if ($rect->{vy} > 0 && $rect->{y} > $app->h - $rect->{h}) {
+        if ( $rect->{vy} > 0 && $rect->{y} > $app->h - $rect->{h} ) {
             $rect->{vy} *= -1;
         }
     }
