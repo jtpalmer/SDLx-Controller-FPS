@@ -32,17 +32,9 @@ $controller->add_event_handler(
 
             my $key = SDL::Events::get_key_name( $event->key_sym );
 
-            if ( $key eq '1' ) {
-                $controller->fps($fps);
-                $controller->move_ratio(1);
-            }
-            elsif ( $key eq '2' ) {
-                $controller->fps($fps / 2);
-                $controller->move_ratio(2);
-            }
-            elsif ( $key eq '3' ) {
-                $controller->fps($fps / 3);
-                $controller->move_ratio(3);
+            if ( $key =~ /^[123]$/ ) {
+                $controller->fps($fps / $key);
+                $controller->move_ratio($key);
             }
         }
     }
