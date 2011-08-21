@@ -8,9 +8,10 @@ use SDLx::Controller::FPS;
 
 my $app = SDLx::App->new();
 
+my $fps = 30;
+
 my $controller = SDLx::Controller::FPS->new(
-    fps        => 15,
-    move_ratio => 2,
+    fps        => $fps,
     eoq        => 1,
 );
 
@@ -32,15 +33,15 @@ $controller->add_event_handler(
             my $key = SDL::Events::get_key_name( $event->key_sym );
 
             if ( $key eq '1' ) {
-                $controller->fps(30);
+                $controller->fps($fps);
                 $controller->move_ratio(1);
             }
             elsif ( $key eq '2' ) {
-                $controller->fps(15);
+                $controller->fps($fps / 2);
                 $controller->move_ratio(2);
             }
             elsif ( $key eq '3' ) {
-                $controller->fps(10);
+                $controller->fps($fps / 3);
                 $controller->move_ratio(3);
             }
         }
