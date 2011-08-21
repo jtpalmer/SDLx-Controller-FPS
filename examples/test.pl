@@ -23,8 +23,8 @@ my $rect = {
     y  => 0,
     w  => 25,
     h  => 25,
-    vx => 1,
-    vy => 1,
+    vx => 1.5,
+    vy => 1.5,
 };
 
 $controller->add_event_handler(
