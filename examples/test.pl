@@ -6,6 +6,10 @@ use SDL::Events;
 use SDLx::App;
 use SDLx::Controller::FPS;
 
+print <<'EOT';
+Press 1, 2 or 3 to change the ratio of "moves" to "shows"
+EOT
+
 my $app = SDLx::App->new(
     w => 320,
     h => 240,
