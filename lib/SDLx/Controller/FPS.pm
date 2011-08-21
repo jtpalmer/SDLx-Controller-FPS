@@ -21,6 +21,7 @@ sub new {
     my $ratio = exists $args{move_ratio} ? $args{move_ratio} : 1;
 
     if ( $ratio != int $ratio ) {
+        carp "move_ratio must be an integer\n";
         $ratio = int $ratio;
     }
 
