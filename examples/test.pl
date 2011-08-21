@@ -1,6 +1,8 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
+use SDL::Event;
+use SDL::Events;
 use SDLx::App;
 use SDLx::Controller::FPS;
 
@@ -18,6 +20,30 @@ my $rect = {
     w => 25,
     h => 25,
 };
+
+$controller->add_event_handler(
+    sub {
+        my ($event) = @_;
+
+        if ( $event->type == SDL_KEYDOWN ) {
+
+            my $key = SDL::Events::get_key_name( $event->key_sym );
+
+            if ( $key eq '1' ) {
+                $controller->fps(30);
+                $controller->move_ratio(1);
+            }
+            elsif ( $key eq '2' ) {
+                $controller->fps(15);
+                $controller->move_ratio(2);
+            }
+            elsif ( $key eq '3' ) {
+                $controller->fps(10);
+                $controller->move_ratio(3);
+            }
+        }
+    }
+);
 
 $controller->add_move_handler(
     sub {

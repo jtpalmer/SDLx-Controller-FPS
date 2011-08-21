@@ -72,4 +72,28 @@ sub run {
 
 sub stop { $_stop{ refaddr $_[0] } = 1 }
 
+sub fps {
+    my $self = shift;
+
+    my $ref = refaddr $self;
+
+    if (@_) {
+        $_fps{$ref}->set( $_[0] );
+    }
+
+    return $_fps{$ref}->get();
+}
+
+sub move_ratio {
+    my $self = shift;
+
+    my $ref = refaddr $self;
+
+    if (@_) {
+        $_move_ratio{$ref} = $_[0];
+    }
+
+    return $_move_ratio{$ref};
+}
+
 1;
