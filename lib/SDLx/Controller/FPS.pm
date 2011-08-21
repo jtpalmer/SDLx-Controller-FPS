@@ -60,6 +60,9 @@ sub run {
     while ( !$_stop{$ref} ) {
         $self->_event($ref);
 
+        # the move ratio may have changed
+        $ratio = $_move_ratio{$ref};
+
         for ( 1 .. $ratio ) {
             $self->_move($ref);
         }
