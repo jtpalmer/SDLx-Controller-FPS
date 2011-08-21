@@ -19,6 +19,8 @@ my $rect = {
     y => 0,
     w => 25,
     h => 25,
+    vx => 1,
+    vy => 1,
 };
 
 $controller->add_event_handler(
@@ -47,8 +49,24 @@ $controller->add_event_handler(
 
 $controller->add_move_handler(
     sub {
-        $rect->{x} += 1;
-        $rect->{y} += 1;
+        $rect->{x} += $rect->{vx};
+        $rect->{y} += $rect->{vy};
+
+        if ($rect->{vx} < 0 && $rect->{x} < 0) {
+            $rect->{vx} *= -1;
+        }
+
+        if ($rect->{vy} < 0 && $rect->{y} < 0) {
+            $rect->{vy} *= -1;
+        }
+
+        if ($rect->{vx} > 0 && $rect->{x} > $app->w - $rect->{w}) {
+            $rect->{vx} *= -1;
+        }
+
+        if ($rect->{vy} > 0 && $rect->{y} > $app->h - $rect->{h}) {
+            $rect->{vy} *= -1;
+        }
     }
 );
 
